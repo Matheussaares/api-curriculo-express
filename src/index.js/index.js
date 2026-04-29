@@ -14,6 +14,11 @@ const pool = new Pool({
 app.use(cors());
 app.use(express.json());
 
+// --- ROTA INICIAL (Mata o erro 404 da Vercel) ---
+app.get('/', (req, res) => {
+  res.json({ message: 'API do Currículo Express rodando com sucesso!' });
+});
+
 // --- ROTAS DE PESSOAS ---
 
 // Listar todas as pessoas (GET)
