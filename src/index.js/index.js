@@ -68,7 +68,7 @@ app.delete('/pessoas/:id', async (req, res) => {
 
 // --- ROTAS DE EXPERIÊNCIAS ---
 
-// Criar nova experiência (POST) - VERSÃO SIMPLIFICADA SEM DESCRIÇÃO
+// Criar nova experiência (POST)
 app.post('/experiencias', async (req, res) => {
   const { pessoa_id, empresa, cargo } = req.body;
   try {
@@ -96,3 +96,6 @@ app.get('/pessoas/:id/experiencias', async (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
+
+// ADICIONE ESTA LINHA ABAIXO:
+module.exports = app;
