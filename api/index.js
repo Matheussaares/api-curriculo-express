@@ -19,7 +19,51 @@ app.get('/', (req, res) => {
   res.json({ message: 'API do Currículo Express rodando com sucesso!' });
 });
 
-// --- ROTAS DE PESSOAS ---
+// --- ROTA EXCLUSIVA PARA O APP PORTFÓLIO ---
+app.get('/api/meu-curriculo', (req, res) => {
+  const portfolioData = {
+    perfil: {
+      nome: "Matheus Soares Lima",
+      localizacao: "Recife, PE",
+      resumo: "Profissional em transição para a área de tecnologia (desenvolvimento/suporte), com sólida experiência prévia em rotinas administrativas, faturamento e finanças.",
+    },
+    academico: [
+      {
+        curso: "Sistemas para Internet",
+        instituicao: "UNICAP",
+        status: "Em andamento"
+      }
+    ],
+    experiencia_profissional: [
+      {
+        cargo: "Analista de Faturamento / Administrativo",
+        periodo: "Até Março/2026",
+        descricao: "Gestão de rotinas de faturamento, controle financeiro e processos administrativos. Foco atual 100% voltado para a transição de carreira para a área tech."
+      }
+    ],
+    projetos_destaque: [
+      {
+        nome: "POUP",
+        tecnologias: ["React", "JavaScript", "Front-end"],
+        descricao: "Aplicativo web voltado para a gestão e organização financeira."
+      },
+      {
+        nome: "Sistema para Estúdio de Tatuagem",
+        tecnologias: ["Banco de Dados", "MER/DBML", "Requisitos"],
+        descricao: "Modelagem de dados e levantamento de requisitos para automação da gestão de um estúdio de tatuagem e piercing."
+      },
+      {
+        nome: "API Node.js CRUD",
+        tecnologias: ["Node.js", "Express", "PostgreSQL"],
+        descricao: "Desenvolvimento de uma API RESTful completa com integração a banco de dados relacional (NeonDB) e deploy na Vercel."
+      }
+    ]
+  };
+
+  res.json(portfolioData);
+});
+
+// --- ROTAS DE PESSOAS (CRUD Original) ---
 
 // Listar todas as pessoas (GET)
 app.get('/pessoas', async (req, res) => {
@@ -71,7 +115,7 @@ app.delete('/pessoas/:id', async (req, res) => {
   }
 });
 
-// --- ROTAS DE EXPERIÊNCIAS ---
+// --- ROTAS DE EXPERIÊNCIAS (CRUD Original) ---
 
 // Criar nova experiência (POST)
 app.post('/experiencias', async (req, res) => {
@@ -102,5 +146,4 @@ app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
 
-// ADICIONE ESTA LINHA ABAIXO:
 module.exports = app;
